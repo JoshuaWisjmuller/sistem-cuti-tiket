@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Orbit — Cuti & Perjalanan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="Orbit dashboard">
+        <span class="brand-mark">o</span><span>orbit<span class="brand-dot">.</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Navigasi utama">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span>Ringkasan</button>
+        <div class="nav-caption">LAYANAN</div>
+        <button class="nav-item" data-page="leave"><span class="nav-icon">▤</span>Manajemen cuti</button>
+        <button class="nav-item" data-page="flights"><span class="nav-icon">✈</span>Cari penerbangan</button>
+        <button class="nav-item" data-page="bookings"><span class="nav-icon">▣</span>Pemesanan saya</button>
+        <div class="nav-caption">PENGELOLAAN</div>
+        <button class="nav-item" data-page="travel"><span class="nav-icon">◈</span>Manajer travel</button>
+        <button class="nav-item" data-page="profile"><span class="nav-icon">◎</span>Profil member</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="api-status"><span class="status-pulse"></span><span><b>API terhubung</b><small>FastAPI · SQLite</small></span></div>
+        <a class="docs-link" href="/docs" target="_blank" rel="noreferrer">Dokumentasi API <span>↗</span></a>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b id="breadcrumbTitle">Ringkasan</b></div>
+        <div class="topbar-right">
+          <label class="actor-switch"><span>Mode demo</span>
+            <select id="actorSelect" aria-label="Pilih aktor demo">
+              <option value="USER-001">Pengguna · Dewi</option>
+              <option value="MEMBER-001">Member · Maya</option>
+              <option value="MEMBER-002">Member · Rafi</option>
+              <option value="EMP-HRD-001">HRD · Rina</option>
+              <option value="EMP-TRV-001">Travel · Bima</option>
+            </select>
+          </label>
+          <div class="avatar" id="avatar">D</div>
+        </div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="welcome-row"><div><div class="eyebrow">SELAMAT DATANG KEMBALI</div><h1>Semua urusan, <span>satu tempat.</span></h1><p class="subheading">Kelola cuti dan perjalanan dinas dengan lebih praktis.</p></div><div class="date-chip" id="todayLabel">Hari ini</div></div>
+        <div class="hero-card"><div class="hero-copy"><span class="hero-kicker">ORBIT WORKSPACE</span><h2>Kerja lebih teratur.<br>Perjalanan lebih lancar.</h2><p>Satu ruang untuk mengelola kebutuhan cuti, penerbangan, dan pemesanan.</p><button class="button button-light" data-go="flights">Cari penerbangan <span>→</span></button></div><div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="plane">✈</div><div class="hero-star star-a">✦</div><div class="hero-star star-b">✧</div></div></div>
+        <div class="section-heading"><div><h2>Ringkasan aktivitas</h2><p>Data yang tersedia untuk aktor demo saat ini.</p></div><button class="text-button" id="refreshDashboard">↻ Perbarui</button></div>
+        <div class="stat-grid"><article class="stat-card"><div class="stat-top"><span class="stat-icon purple">▣</span><span class="stat-note">Pemesanan</span></div><strong id="statBookings">—</strong><span class="stat-label">Total booking saya</span></article><article class="stat-card"><div class="stat-top"><span class="stat-icon green">✈</span><span class="stat-note">Perjalanan</span></div><strong id="statFlights">4</strong><span class="stat-label">Penerbangan demo tersedia</span></article><article class="stat-card"><div class="stat-top"><span class="stat-icon amber">◷</span><span class="stat-note">Layanan</span></div><strong>18</strong><span class="stat-label">Use case dalam rancangan</span></article></div>
+        <div class="content-grid"><article class="panel"><div class="panel-heading"><div><h3>Akses cepat</h3><p>Pilih aktivitas yang ingin kamu lakukan.</p></div></div><div class="quick-actions"><button class="quick-action" data-go="flights"><span class="quick-icon blue">✈</span><span><b>Pesan tiket</b><small>Temukan penerbangan</small></span><i>→</i></button><button class="quick-action" data-go="bookings"><span class="quick-icon violet">▣</span><span><b>Lihat pemesanan</b><small>Kelola booking kamu</small></span><i>→</i></button><button class="quick-action" data-go="leave"><span class="quick-icon orange">▤</span><span><b>Monitor cuti</b><small>Riwayat dan saldo cuti</small></span><i>→</i></button></div></article><article class="panel note-panel"><div class="panel-heading"><div><h3>Mode demonstrasi</h3><p>Gunakan identitas demo untuk mencoba peran berbeda.</p></div></div><div class="note-box"><b>Tips pengujian</b><p>Ganti aktor melalui pilihan di kanan atas. Setiap endpoint tetap menggunakan header <code>X-User-Id</code> yang dibutuhkan backend.</p></div><a class="inline-link" href="/docs" target="_blank">Buka Swagger UI ↗</a></article></div>
+      </section>
+
+      <section class="page" id="page-flights">
+        <div class="page-heading"><div><div class="eyebrow">PERJALANAN</div><h1>Temukan penerbangan</h1><p class="subheading">Cari jadwal yang sesuai, bandingkan harga, lalu pesan tiketmu.</p></div></div>
+        <div class="panel search-panel"><form id="flightSearchForm" class="search-form"><label>Tujuan<input name="tujuan" placeholder="Contoh: Bali" value="Bali" required></label><label>Tanggal<input name="tanggal" type="date" value="2026-12-01"></label><label>Harga maksimum<input name="harga_maksimum" type="number" min="0" placeholder="Contoh: 1300000"></label><button class="button button-primary" type="submit">⌕ Cari penerbangan</button></form><div class="form-hint">Pencarian menggunakan data penerbangan demo yang tersimpan di database.</div></div>
+        <div class="multi-search"><div class="multi-search-title"><b>Pencarian multi-destinasi</b><span>UC04 · Satu tanggal, beberapa tujuan</span></div><form id="multiSearchForm" class="multi-search-form"><label>Berangkat dari<input name="lokasi_keberangkatan" value="Jakarta" required></label><label>Tanggal<input name="tanggal" type="date" value="2026-12-01" required></label><label>Tujuan (pisahkan dengan koma)<input name="tujuan" value="Bali, Surabaya, Yogyakarta" required></label><button class="button button-outline" type="submit">Cari beberapa tujuan</button></form><div id="multiSearchResults" class="compact-results muted-copy">Hasil multi-destinasi akan tampil di sini.</div></div><div class="results-heading"><div><h2>Hasil pencarian</h2><p id="flightResultHint">Cari tujuan untuk melihat penerbangan.</p></div><button class="button button-outline button-small" id="compareFlights" disabled>⇄ Bandingkan harga</button></div>
+        <div id="flightResults" class="flight-list empty-state"><div class="empty-icon">✈</div><b>Belum ada hasil pencarian</b><p>Masukkan tujuan dan tekan tombol cari.</p></div>
+      </section>
+
+      <section class="page" id="page-bookings">
+        <div class="page-heading"><div><div class="eyebrow">AKUN SAYA</div><h1>Pemesanan saya</h1><p class="subheading">Pantau status booking dan kelola tiket yang sudah dipesan.</p></div><button class="button button-primary" id="reloadBookings">↻ Muat ulang</button></div>
+        <div id="bookingList" class="booking-list empty-state"><div class="empty-icon">▣</div><b>Memuat pemesanan…</b></div>
+      </section>
+
+      <section class="page" id="page-leave">
+        <div class="page-heading"><div><div class="eyebrow">PEGAWAI</div><h1>Manajemen cuti</h1><p class="subheading">Pantau pengajuan pada tanggal tertentu atau lihat riwayat pegawai.</p></div></div>
+        <div class="two-panels"><article class="panel"><div class="panel-heading"><div><h3>Pengajuan pada tanggal</h3><p>UC01 · Khusus HRD</p></div></div><form id="leaveDateForm" class="stack-form"><label>Tanggal pemantauan<input type="date" name="tanggal" value="2026-11-20" required></label><button class="button button-primary" type="submit">Tampilkan pengajuan</button></form><div id="leaveResults" class="compact-results muted-copy">Pilih tanggal untuk melihat pengajuan cuti.</div></article><article class="panel"><div class="panel-heading"><div><h3>Riwayat dan saldo cuti</h3><p>UC02 · Khusus HRD</p></div></div><form id="leaveHistoryForm" class="stack-form"><label>ID pegawai<select name="id_pegawai"><option value="EMP-001">EMP-001 · Andi Pratama</option><option value="EMP-002">EMP-002 · Siti Rahma</option></select></label><label>Tahun<input type="number" name="tahun" value="2026" min="2020" max="2100"></label><button class="button button-primary" type="submit">Lihat riwayat</button></form><div id="leaveHistoryResults" class="compact-results muted-copy">Pilih pegawai untuk melihat riwayat.</div></article></div>
+      </section>
+
+      <section class="page" id="page-travel">
+        <div class="page-heading"><div><div class="eyebrow">OPERASIONAL</div><h1>Manajer travel</h1><p class="subheading">Kelola status pemesanan dan buat booking untuk pengunjung.</p></div></div>
+        <div class="panel"><div class="panel-heading"><div><h3>Semua pemesanan</h3><p>UC12–UC13 · Daftar booking dan filter status.</p></div><button class="button button-outline button-small" id="reloadTravel">↻ Muat ulang</button></div><div class="filter-row"><label>Filter status<select id="travelStatus"><option value="">Semua status</option><option value="booked">Booked</option><option value="confirmed">Confirmed</option><option value="waiting for the payment">Waiting for payment</option><option value="dibatalkan">Dibatalkan</option></select></label></div><div id="travelBookings" class="table-wrap muted-copy">Memuat data booking…</div></div>
+        <div class="two-panels travel-bottom"><article class="panel"><div class="panel-heading"><div><h3>Otorisasi booking</h3><p>UC14 · Verifikasi kode referensi.</p></div></div><form id="authorizeForm" class="stack-form"><label>Kode booking reference<input name="kode" placeholder="BOOK-CONF-001" required></label><button class="button button-primary" type="submit">Periksa booking</button></form><div id="authorizeResult" class="compact-results muted-copy">Masukkan kode booking untuk memeriksa status.</div></article><article class="panel"><div class="panel-heading"><div><h3>Booking untuk pengunjung</h3><p>UC16–UC18 · Cari penerbangan dan kirim e-tiket demo.</p></div></div><form id="guestSearchForm" class="stack-form"><label>Tujuan<input name="tujuan" value="Bali" required></label><button class="button button-outline" type="submit">Cari penerbangan</button></form><div id="guestResults" class="compact-results muted-copy">Cari penerbangan untuk pengunjung.</div><form id="guestBookingForm" class="stack-form guest-booking-form"><label>ID pengunjung<input name="id_pengunjung" value="USER-001" required></label><label>ID penerbangan<input name="id_penerbangan" placeholder="Pilih dari hasil pencarian" required></label><button class="button button-primary" type="submit">Buat booking pengunjung</button></form><div id="guestBookingResult" class="compact-results"></div></article></div>
+      </section>
+
+      <section class="page" id="page-profile">
+        <div class="page-heading"><div><div class="eyebrow">AKUN MEMBER</div><h1>Profil member</h1><p class="subheading">Perbarui data member agar proses validasi tiket dapat dilakukan.</p></div></div>
+        <div class="panel profile-panel"><div class="profile-intro"><div class="profile-avatar">M</div><div><h3>Frequent Traveller</h3><p>Data profil disimpan melalui endpoint UC09.</p></div></div><form id="profileForm" class="profile-form"><label>Nama lengkap<input name="nama" placeholder="Nama lengkap"></label><label>Email<input name="email" type="email" placeholder="nama@email.com"></label><label>Nomor identitas<input name="nomor_identitas" placeholder="Nomor identitas"></label><label>Tanggal lahir<input name="tanggal_lahir" type="date"></label><label>Nomor telepon<input name="nomor_telepon" placeholder="08xxxxxxxxxx"></label><div class="profile-actions"><button class="button button-primary" type="submit">Simpan perubahan</button><span class="form-hint">Kosongkan field yang tidak ingin diubah.</span></div></form></div>
+        <div class="panel validate-panel"><div class="panel-heading"><div><h3>Validasi tiket</h3><p>UC10 · Memerlukan profil Member yang lengkap.</p></div></div><form id="validateTicketForm" class="stack-form"><label>ID tiket<input name="id_tiket" placeholder="TICKET-002" required></label><button class="button button-primary" type="submit">Validasi tiket</button></form><div id="validateTicketResult" class="compact-results muted-copy">Masukkan ID tiket untuk memulai validasi.</div></div>
+      </section>
+
+      <footer class="footer"><span>© 2026 Orbit Workspace</span><span>Built for demo · <a href="/docs" target="_blank">FastAPI docs</a></span></footer>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
