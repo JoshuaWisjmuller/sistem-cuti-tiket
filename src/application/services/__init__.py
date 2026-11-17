@@ -1,0 +1,1 @@
+"""Service aplikasi per kelompok use case."""
